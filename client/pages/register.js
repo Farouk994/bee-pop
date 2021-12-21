@@ -3,9 +3,74 @@ import React from "react";
 const Register = () => {
    return (
       <div className="conatiner">
-         <div className="row">
-            <div className="col">
+         <div className="row py-5 bg-secondary text-light">
+            <div className="col text-center">
                <h1>Register Here</h1>
+            </div>
+         </div>
+
+         <div className="row py-5">
+            <div className="col-md-6 offset-md-3">
+               <form>
+                  <div className="form-group p-2">
+                     <small>
+                        <label className="text-muted">Your Name</label>
+                     </small>
+                     <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Enter Name"
+                     ></input>
+                  </div>
+
+                  <div className="form-group p-2">
+                     <small>
+                        <label className="text-muted">Email Address</label>
+                     </small>
+                     <input
+                        type="email"
+                        className="form-control"
+                        placeholder="Email"
+                     ></input>
+                  </div>
+
+                  <div className="form-group p-2">
+                     <small>
+                        <label className="text-muted">Password</label>
+                     </small>
+                     <input
+                        type="password"
+                        className="form-control"
+                        placeholder="Password"
+                     ></input>
+                  </div>
+
+                  <div className="form-group p-2">
+                     <small>
+                        <label className="text-muted">Password</label>
+                     </small>
+                     <select className="form-control">
+                        <option>What is your favorite color?</option>
+                        <option>Which city where you born?</option>
+                        <option>What is the name of your first pet?</option>
+                     </select>
+                     <small className="form-test text-muted">
+                        You can use this to reset your password if forgotten.
+                     </small>
+                  </div>
+
+                  <div className="form-group p-2">
+                     <input
+                        type="text"
+                        placeholder="Write your answer here"
+                     ></input>
+                  </div>
+                  <div className="form-group p-2">
+                     <button className="btn btn-primary col-12 ">
+                        Submit
+                     </button>
+                  </div>
+               </form>
             </div>
          </div>
       </div>
