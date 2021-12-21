@@ -11,7 +11,7 @@ const Register = () => {
       e.preventDefault();
       console.log(name, email, password, secret);
       axios
-         .post("http://localhost:8080/api/register", {
+         .post("http://localhost:8000/api/register", {
             name,
             email,
             password,
