@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 const Register = () => {
+   const [name, setName] = useState("");
+   const [email, setEmail] = useState("");
+   const [password, setPassword] = useState("");
+   const [secret, setSecret] = useState("");
+
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log(name, email, password, secret);
+      axios
+         .post("http://localhost:8080/api/register", {
+            name,
+            email,
+            password,
+            secret,
+         })
+         .then((res) => {
+            console.log(res);
+         })
+         .catch((err) => {
+            console.log(err);
+         });
+   };
+
    return (
-      <div className="conatiner">
+      <div>
          <div className="row py-5 bg-secondary text-light">
             <div className="col text-center">
                <h1>Register Here</h1>
@@ -11,12 +35,16 @@ const Register = () => {
 
          <div className="row py-5">
             <div className="col-md-6 offset-md-3">
-               <form>
+               <form onSubmit={handleSubmit}>
                   <div className="form-group p-2">
                      <small>
                         <label className="text-muted">Your Name</label>
                      </small>
                      <input
+                        value={name}
+                        onChange={(e) => {
+                           setName(e.target.value);
+                        }}
                         type="text"
                         className="form-control"
                         placeholder="Enter Name"
@@ -28,6 +56,10 @@ const Register = () => {
                         <label className="text-muted">Email Address</label>
                      </small>
                      <input
+                        value={email}
+                        onChange={(e) => {
+                           setEmail(e.target.value);
+                        }}
                         type="email"
                         className="form-control"
                         placeholder="Email"
@@ -39,6 +71,10 @@ const Register = () => {
                         <label className="text-muted">Password</label>
                      </small>
                      <input
+                        value={password}
+                        onChange={(e) => {
+                           setPassword(e.target.value);
+                        }}
                         type="password"
                         className="form-control"
                         placeholder="Password"
@@ -61,14 +97,16 @@ const Register = () => {
 
                   <div className="form-group p-2">
                      <input
+                        value={secret}
+                        onChange={(e) => {
+                           setSecret(e.target.value);
+                        }}
                         type="text"
                         placeholder="Write your answer here"
                      ></input>
                   </div>
                   <div className="form-group p-2">
-                     <button className="btn btn-primary col-12 ">
-                        Submit
-                     </button>
+                     <button className="btn btn-primary col-12 ">Submit</button>
                   </div>
                </form>
             </div>

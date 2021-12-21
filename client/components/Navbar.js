@@ -4,7 +4,10 @@ import Link from "next/link";
 const Navbar = () => {
    return (
       <div>
-         <nav className="nav bg-dark d-flex justify-content-end">
+         <nav
+            className="nav  d-flex justify-content-end"
+            style={{ backgroundColor: "blue" }}
+         >
             <Link href="/">
                <a className="nav-link text-light">Home</a>
             </Link>
