@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const { readdirSync } = require("fs");
 
 const morgan = require("morgan");
 const esm = require("esm");
@@ -12,9 +13,9 @@ const app = express();
 mongoose
    .connect(process.env.DATABASE, {
       useNewUrlParser: true,
-    //   useFindAndModify: false,
+      //   useFindAndModify: false,
       useUnifiedTopology: true,
-    //   useCreateIndex: true,
+      //   useCreateIndex: true,
    })
    .then(() => {
       console.log("DB has been connected ===>");
@@ -32,8 +33,9 @@ app.use(
    })
 );
 
-app.post("/api/register", (req, res) => {
-   console.log("Register EndPoint", req.body);
+// Auto load routes
+readdirSync("./routes").map((r) => {
+   app.use("/api", require(`./routes/${r}`));
 });
 
 const PORT = process.env.PORT || 8000;
@@ -41,4 +43,3 @@ const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
    console.log(`Server running on PORT ${PORT}`);
 });
-
