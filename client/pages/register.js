@@ -16,7 +16,7 @@ const Register = () => {
       console.log(name, email, password, secret);
       try {
          const { data } = await axios.post(
-            "http://localhost:8000/api/register",
+            `${process.env.NEXT_PUBLIC_API}/register`,
             {
                name,
                email,
@@ -24,10 +24,10 @@ const Register = () => {
                secret,
             }
          );
-         // .then((res) => {
-         //    console.log(res);
-         //    setOkay(res.data.ok);
-         // });
+         setName('')
+         setEmail('')
+         setPassword('')
+         setSecret('')
          setOkay(data.ok);
       } catch (err) {
          toast.error(err.response.data);
@@ -115,7 +115,12 @@ const Register = () => {
                      ></input>
                   </div>
                   <div className="form-group p-2">
-                     <button className="btn btn-primary col-12 ">Submit</button>
+                     <button
+                        disabled={!name || !email || !secret || !password}
+                        className="btn btn-primary col-12 "
+                     >
+                        Submit
+                     </button>
                   </div>
                </form>
             </div>
