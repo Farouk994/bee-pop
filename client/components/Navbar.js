@@ -20,6 +20,10 @@ const Navbar = () => {
                <a className="nav-link text-light">Login</a>
             </Link>
 
+            <Link href="/sign_in">
+               <a className="nav-link text-light">Sign In</a>
+            </Link>
+
             {/* <Link class="nav-link text-light" href="about">
                <a>About</a>
             </Link> */}
