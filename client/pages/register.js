@@ -3,18 +3,22 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Modal } from "antd";
 import Link from "next/link";
+import { SyncOutlined } from "@ant-design/icons";
 
 const Register = () => {
-   const [name, setName] = useState("");
-   const [email, setEmail] = useState("");
-   const [password, setPassword] = useState("");
-   const [secret, setSecret] = useState("");
+   const [name, setName] = useState("Pete");
+   const [email, setEmail] = useState("pete2@gmail.com");
+   const [password, setPassword] = useState("12123123");
+   const [secret, setSecret] = useState("red");
    const [okay, setOkay] = useState(false);
+   const [loading, setLoading] = useState(false);
 
    const handleSubmit = async (e) => {
       e.preventDefault();
-      console.log(name, email, password, secret);
+      // console.log(name, email, password, secret);
       try {
+         // When loading data
+         setLoading(true);
          const { data } = await axios.post(
             `${process.env.NEXT_PUBLIC_API}/register`,
             {
@@ -24,13 +28,17 @@ const Register = () => {
                secret,
             }
          );
-         setName('')
-         setEmail('')
-         setPassword('')
-         setSecret('')
+         setName("");
+         setEmail("");
+         setPassword("");
+         setSecret("");
          setOkay(data.ok);
+         // Once the response is got the loading is then set back to false
+         setLoading(false);
       } catch (err) {
          toast.error(err.response.data);
+         // if there is error it is still false
+         setLoading(false);
       }
    };
 
@@ -119,7 +127,11 @@ const Register = () => {
                         disabled={!name || !email || !secret || !password}
                         className="btn btn-primary col-12 "
                      >
-                        Submit
+                        {loading ? (
+                           <SyncOutlined spin className="py-1" />
+                        ) : (
+                           "Submit"
+                        )}
                      </button>
                   </div>
                </form>
