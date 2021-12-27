@@ -139,7 +139,7 @@ export default function SignInSide() {
                         fullWidth
                         id="name"
                         value={name}
-                        label="UserName"
+                        label="Username"
                         name="name"
                         autoComplete="name"
                         autoFocus
@@ -156,7 +156,7 @@ export default function SignInSide() {
                         label="Email Address"
                         name="email"
                         autoComplete="email"
-                        autoFocus
+                  
                         onChange={(e) => {
                            setEmail(e.target.value);
                         }}

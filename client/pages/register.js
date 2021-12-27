@@ -47,7 +47,7 @@ const Register = () => {
       <div className="container-fluid">
          <div className="row py-5 text-light bg-default-image">
             <div className="col text-center">
-               <h1 style={{color:"whitesmoke"}}>Register Here</h1>
+               <h1 style={{ color: "whitesmoke" }}>Register Here</h1>
             </div>
          </div>
 
@@ -83,6 +83,13 @@ const Register = () => {
                      <a className="btn btn-primary btn-sm">login</a>
                   </Link>
                </Modal>
+            </div>
+         </div>
+         <div className="row">
+            <div className="col">
+               <p className="text-center">
+                  Already Registered? <Link href="/login">Login</Link>
+               </p>
             </div>
          </div>
       </div>
