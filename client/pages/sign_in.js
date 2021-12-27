@@ -201,12 +201,15 @@ export default function SignInSide() {
                            </label>
                         </small>
                         <select className="form-control">
-                          {/* <option></option> */}
+                           {/* <option></option> */}
                            <option>What is your favorite color?</option>
                            <option>Which city where you born?</option>
                            <option>What is the name of your first pet?</option>
                         </select>
-                        <small className="form-test text-muted">
+                        <small
+                           className="form-test text-muted"
+                           style={{ color: "green" }}
+                        >
                            You can use this to reset your password if forgotten.
                         </small>
                         {/* </div> */}
@@ -248,12 +251,12 @@ export default function SignInSide() {
                      </Button>
                      <Grid container>
                         <Grid item xs>
-                           <Link href="#" variant="body2">
+                           <Link href="#" variant="body2" style={{textDecoration:"none"}}>
                               Forgot password?
                            </Link>
                         </Grid>
                         <Grid item>
-                           <Link href="/login" variant="body2">
+                           <Link href="/login" variant="body2" style={{textDecoration:"none"}}>
                               {"Already have an account? Login"}
                            </Link>
                         </Grid>

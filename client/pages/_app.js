@@ -4,6 +4,7 @@ import Head from "next/head";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "antd/dist/antd.css";
+import "../public/css/style.css";
 // import Link from "next/link"
 
 function MyApp({ Component, pageProps }) {
