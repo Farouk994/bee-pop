@@ -1,0 +1,9 @@
+node_modules
+
+/pages/info.txt
+
+/.env.local
+
+ *.next
+
+C:\Users\user\Desktop\bee-pop\client\.next
