@@ -28,6 +28,7 @@ const Login = () => {
             }
          );
          // Redirect User user to home page
+         console.log(data);
          router.push("/");
       } catch (err) {
          toast.error(err.response.data);
@@ -61,8 +62,7 @@ const Login = () => {
             </div>
          </div>
          <div className="row">
-            <div className="col">
-            </div>
+            <div className="col"></div>
          </div>
          <div className="row">
             <div className="col">

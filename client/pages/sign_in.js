@@ -224,6 +224,7 @@ export default function SignInSide() {
                         type="text"
                         id="secret"
                         value={secret}
+                        variant="filled"
                         placeholder="Write your answer here"
                         autoComplete="current-password"
                         onChange={(e) => {

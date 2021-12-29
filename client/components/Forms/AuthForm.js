@@ -1,4 +1,8 @@
 import { SyncOutlined } from "@ant-design/icons";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Button from "@mui/material/Button";
+import Checkbox from "@mui/material/Checkbox";
 
 const AuthForm = ({
    handleSubmit,
@@ -34,7 +38,7 @@ const AuthForm = ({
          </div>
       )}
 
-      <div className="form-group p-2">
+      {/* <div className="form-group p-2">
          <small>
             <label className="text-muted">Email Address</label>
          </small>
@@ -62,7 +66,36 @@ const AuthForm = ({
             className="form-control"
             placeholder="Password"
          ></input>
-      </div>
+      </div> */}
+
+      <TextField
+         margin="normal"
+         required
+         fullWidth
+         id="email"
+         value={email}
+         label="Email Address"
+         name="email"
+         autoComplete="email"
+         onChange={(e) => {
+            setEmail(e.target.value);
+         }}
+      />
+      <TextField
+         margin="normal"
+         required
+         fullWidth
+         name="password"
+         label="Password"
+         type="password"
+         id="password"
+         value={password}
+         autoComplete="current-password"
+         onChange={(e) => {
+            setPassword(e.target.value);
+         }}
+      />
+
       {page !== "login" && (
          <>
             <div className="form-group p-2">
@@ -79,7 +112,7 @@ const AuthForm = ({
                </small>
             </div>
 
-            <div className="form-group p-2">
+            {/* <div className="form-group p-2">
                <input
                   value={secret}
                   onChange={(e) => {
@@ -88,17 +121,50 @@ const AuthForm = ({
                   type="text"
                   placeholder="Write your answer here"
                ></input>
-            </div>
+            </div> */}
+            <TextField
+               id="filled-basic"
+               label="Write Your Answer here"
+               variant="filled"
+               value={secret}
+               onChange={(e) => {
+                  setSecret(e.target.value);
+               }}
+            />
          </>
       )}
-      <div className="form-group p-2">
+
+      {/* <div className="form-group p-2">
          <button
-            disabled={!name || !email || !secret || !password}
+            disabled={
+               page === "login"
+                  ? !email || !password
+                  : !name || !email || !secret || !password
+            }
             className="btn btn-primary col-12 "
          >
             {loading ? <SyncOutlined spin className="py-1" /> : "Submit"}
          </button>
-      </div>
+      </div> */}
+
+      <FormControlLabel
+         control={<Checkbox value="remember" color="primary" />}
+         label="Remember me"
+      />
+      <Button
+         type="submit"
+         fullWidth
+         variant="contained"
+         sx={{ mt: 3, mb: 2 }}
+         disabled={
+            page === "login"
+               ? !email || !password
+               : !name || !email || !password || !secret
+         }
+         // className="btn btn-primary col-12 "
+      >
+         {loading ? <SyncOutlined spin className="py-1" /> : "Sign Up"}
+      </Button>
    </form>
 );
 

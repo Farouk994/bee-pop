@@ -2,4 +2,12 @@ node_modules
 
 /pages/info.txt
 
+<<<<<<< HEAD
 /.env.local
+=======
+/.env.local
+
+ *.next
+
+C:\Users\user\Desktop\bee-pop\client\.next
+>>>>>>> master

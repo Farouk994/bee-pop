@@ -1,5 +1,10 @@
 const User = require("../models/User");
-const { hashPassword, compareCompass } = require("../helpers/auth");
+const {
+   hashPassword,
+   compareCompass,
+   comparePassword,
+} = require("../helpers/auth");
+import jwt from "jsonwebtoken";
 
 export const register = async (req, res) => {
    // Data from body
@@ -16,7 +21,7 @@ export const register = async (req, res) => {
    //    Check if email exists, if it does return error
    const exist = await User.findOne({ email });
    if (exist) return res.status(400).send("Email is taken");
-   if (!exist) return res.status(400).send("Email is required");
+   if (!email) return res.status(400).send("Email is required");
 
    //    hash Password
    const hashedPassword = await hashPassword(password);
@@ -30,6 +35,35 @@ export const register = async (req, res) => {
       });
    } catch (err) {
       console.log("REGISTER FAILED", err.message);
-      res.status(400).send("Error, Try Again");
+      return res.status(400).send("Error, Try Again");
+   }
+};
+
+export const login = async (req, res) => {
+   // find user hash password already saved in database and compare with the client password
+   try {
+      // find user with email, check db
+      const { email, password } = req.body;
+      const user = await User.findOne({ email });
+      if (!user) return res.status(400).send("Invalid Credentials");
+
+      // check password
+      const match = await comparePassword(password, user.password);
+      if (!match) return res.status(400).send("Invalid Credentials");
+
+      // create signed token
+      // /find user _id in token, generate token
+      const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+         expiresIn: "7d",
+      });
+      // Just to make sure we are not sending user password and secret in token
+      user.password = undefined;
+      user.secret = undefined;
+
+      // send response as json, all user info will be sent except password and secret
+      res.json({ token, user });
+   } catch (err) {
+      console.log(err);
+      return res.status(400).send("Error, please try again");
    }
 };
