@@ -7,8 +7,8 @@ import { useRouter } from "next/router";
 import { UserContext } from "../context/index";
 
 const Login = () => {
-   const [email, setEmail] = useState("");
-   const [password, setPassword] = useState("");
+   const [email, setEmail] = useState("boris@gmail.com");
+   const [password, setPassword] = useState("111111");
    const [loading, setLoading] = useState(false);
 
    const [state, setState] = useContext(UserContext);
@@ -28,7 +28,8 @@ const Login = () => {
                password,
             }
          );
-
+         // Set state to the userContext hook from the data 
+         // we get from the user after logging in
          setState({
             user: data.user,
             token: data.token,
