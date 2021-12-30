@@ -3,9 +3,10 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Modal } from "antd";
 import Link from "next/link";
-// import { GooeyCircleLoader } from "react-loaders-kit";
+import { GooeyCircleLoader } from "react-loaders-kit";
 // import { SyncOutlined } from "@ant-design/icons";
 import AuthForm from "../components/Forms/AuthForm";
+import Loader from 'react-loader-spinner';
 
 const Register = () => {
    const [name, setName] = useState("Pete");

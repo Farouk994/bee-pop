@@ -80,7 +80,7 @@ const AuthForm = ({
                   <label className="text-muted">Password Question *</label>
                </small>
                <select
-                  className="form-control"
+                  className="form-control focus-none"
                   onChange={(e) => setQuestion(e.target.value)}
                >
                   <option value="">Select Question *</option>

@@ -8,3 +8,8 @@ img {
    height: 150px;
    text-shadow: 2px 2px 8px #000;
 }
+
+.focus-none:focus {
+   outline: none;
+   box-shadow: none;
+ }

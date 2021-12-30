@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import { UserProvider } from "../context";
 import Navbar from "../components/Navbar";
 import Head from "next/head";
 import { ToastContainer } from "react-toastify";
@@ -16,7 +17,7 @@ function MyApp({ Component, pageProps }) {
       colors: ["#99fffe", "#f42e00", "#042549"],
    };
    return (
-      <>
+      <UserProvider>
          <Head>
             <link rel="stylesheet" href="/css/style" />
          </Head>
@@ -32,9 +33,15 @@ function MyApp({ Component, pageProps }) {
             draggable
             pauseOnHover
          />
-         <GooeyCircleLoader {...loaderProps} />
+         {/* <GooeyCircleLoader
+            type="ThreeDots"
+            color="#2BAD60"
+            height="100"
+            width="100"
+            // {...loaderProps}
+         /> */}
          <Component {...pageProps} />
-      </>
+      </UserProvider>
    );
 }
 
