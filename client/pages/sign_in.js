@@ -1,18 +1,18 @@
-import * as React from "react";
+import React from "react";
 import { useState } from "react";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+// import TextField from "@mui/material/TextField";
+// import FormControlLabel from "@mui/material/FormControlLabel";
+// import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
-import FormControl from "@mui/material/FormControl";
+// import FormControl from "@mui/material/FormControl";
 // import InputLabel from "@mui/material/InputLabel";
 // import MenuItem from "@mui/material/MenuItem";
 // import Select from "@mui/material/Select";
@@ -21,6 +21,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { SyncOutlined } from "@ant-design/icons";
 import { Modal } from "antd";
+import AuthForm from "../components/Forms/AuthForm";
 
 function Copyright(props) {
    return (
@@ -31,7 +32,7 @@ function Copyright(props) {
          {...props}
       >
          {"Copyright © "}
-         <Link color="inherit" href="https://mui.com/">
+         <Link color="inherit" href="#">
             Your Website
          </Link>{" "}
          {new Date().getFullYear()}
@@ -133,136 +134,21 @@ export default function SignInSide() {
                      onSubmit={handleSubmit}
                      sx={{ mt: 1 }}
                   >
-                     <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="name"
-                        value={name}
-                        label="Username"
-                        name="name"
-                        autoComplete="name"
-                        autoFocus
-                        onChange={(e) => {
-                           setName(e.target.value);
-                        }}
+                     <AuthForm
+                        handleSubmit={handleSubmit}
+                        question={question}
+                        setQuestion={setQuestion}
+                        name={name}
+                        setName={setName}
+                        email={email}
+                        setEmail={setEmail}
+                        password={password}
+                        setPassword={setPassword}
+                        secret={secret}
+                        setSecret={setSecret}
+                        loading={loading}
+                        setLoading={setLoading}
                      />
-                     <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="email"
-                        value={email}
-                        label="Email Address"
-                        name="email"
-                        autoComplete="email"
-                  
-                        onChange={(e) => {
-                           setEmail(e.target.value);
-                        }}
-                     />
-                     <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        name="password"
-                        label="Password"
-                        type="password"
-                        id="password"
-                        value={password}
-                        autoComplete="current-password"
-                        onChange={(e) => {
-                           setPassword(e.target.value);
-                        }}
-                     />
-                     {/* <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">
-                           Age
-                        </InputLabel>
-                        <Select
-                           labelId="demo-simple-select-label"
-                           id="demo-simple-select"
-                           value={question}
-                           label="Age"
-                           onChange={handleChange}
-                        >
-                           <MenuItem>What is your favorite color?</MenuItem>
-                           <MenuItem>Which city where you born?</MenuItem>
-                           <MenuItem>
-                              What is the name of your first pet?
-                           </MenuItem>
-                        </Select>
-                     </FormControl> */}
-                     <FormControl fullWidth>
-                        {/* <div className="form-group p-2"> */}
-                        <small>
-                           <label className="text-muted">
-                              Password Question
-                           </label>
-                        </small>
-                        <select className="form-control">
-                           {/* <option></option> */}
-                           <option>What is your favorite color?</option>
-                           <option>Which city where you born?</option>
-                           <option>What is the name of your first pet?</option>
-                        </select>
-                        <small
-                           className="form-test text-muted"
-                           style={{ color: "green" }}
-                        >
-                           You can use this to reset your password if forgotten.
-                        </small>
-                        {/* </div> */}
-                     </FormControl>
-
-                     <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        name="secret"
-                        label="Secret"
-                        type="text"
-                        id="secret"
-                        value={secret}
-                        variant="filled"
-                        placeholder="Write your answer here"
-                        autoComplete="current-password"
-                        onChange={(e) => {
-                           setSecret(e.target.value);
-                        }}
-                     />
-
-                     <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
-                     />
-                     <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        sx={{ mt: 3, mb: 2 }}
-                        disabled={!name || !email || !password || !secret}
-                        // className="btn btn-primary col-12 "
-                     >
-                        {loading ? (
-                           <SyncOutlined spin className="py-1" />
-                        ) : (
-                           "Sign Up"
-                        )}
-                     </Button>
-                     <Grid container>
-                        <Grid item xs>
-                           <Link href="#" variant="body2" style={{textDecoration:"none"}}>
-                              Forgot password?
-                           </Link>
-                        </Grid>
-                        <Grid item>
-                           <Link href="/login" variant="body2" style={{textDecoration:"none"}}>
-                              {"Already have an account? Login"}
-                           </Link>
-                        </Grid>
-                     </Grid>
-                     <Copyright sx={{ mt: 5 }} />
                   </Box>
                </Box>
             </Grid>

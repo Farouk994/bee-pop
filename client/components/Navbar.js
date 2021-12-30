@@ -12,9 +12,9 @@ const Navbar = () => {
                <a className="nav-link text-light">Home</a>
             </Link>
 
-            <Link href="/register">
+            {/* <Link href="/register">
                <a className="nav-link text-light">Register</a>
-            </Link>
+            </Link> */}
 
             <Link href="/login">
                <a className="nav-link text-light">Login</a>

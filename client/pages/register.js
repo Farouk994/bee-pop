@@ -3,22 +3,26 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Modal } from "antd";
 import Link from "next/link";
-import { SyncOutlined } from "@ant-design/icons";
+// import { GooeyCircleLoader } from "react-loaders-kit";
+// import { SyncOutlined } from "@ant-design/icons";
 import AuthForm from "../components/Forms/AuthForm";
 
 const Register = () => {
    const [name, setName] = useState("Pete");
    const [email, setEmail] = useState("pete2@gmail.com");
    const [password, setPassword] = useState("12123123");
-   const [secret, setSecret] = useState("red");
+   const [secret, setSecret] = useState("");
    const [okay, setOkay] = useState(false);
    const [loading, setLoading] = useState(false);
+   const [question, setQuestion] = useState(false);
+   const [pageLoader, setPageLoader] = useState("false");
 
    const handleSubmit = async (e) => {
       e.preventDefault();
       // console.log(name, email, password, secret);
       try {
          // When loading data
+
          setLoading(true);
          const { data } = await axios.post(
             `${process.env.NEXT_PUBLIC_API}/register`,
@@ -55,6 +59,8 @@ const Register = () => {
             <div className="col-md-6 offset-md-3">
                <AuthForm
                   handleSubmit={handleSubmit}
+                  question={question}
+                  setQuestion={setQuestion}
                   name={name}
                   setName={setName}
                   email={email}

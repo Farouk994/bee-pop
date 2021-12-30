@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Link from "next/link";
-import { SyncOutlined } from "@ant-design/icons";
 import AuthForm from "../components/Forms/AuthForm";
-// import Router from "next/dist/next-server/server/router";
 import { useRouter } from "next/router";
 
 const Login = () => {
-   const [email, setEmail] = useState("pete2@gmail.com");
-   const [password, setPassword] = useState("12123123");
+   const [email, setEmail] = useState("");
+   const [password, setPassword] = useState("");
    const [loading, setLoading] = useState(false);
 
    const router = useRouter();
@@ -45,25 +43,24 @@ const Login = () => {
             </div>
          </div>
 
-         <div className="row py-5">
-            <div className="col-md-6 offset-md-3">
-               <AuthForm
-                  handleSubmit={handleSubmit}
-                  email={email}
-                  setEmail={setEmail}
-                  password={password}
-                  setPassword={setPassword}
-                  loading={loading}
-                  setLoading={setLoading}
-                  // Since i was using a reusable component i decided to add a new prop for "page"
-                  // so that user wont be required to add their names again when logging in
-                  page="login"
-               />
+         <form onSubmit={handleSubmit}>
+            <div className="row py-5">
+               <div className="col-md-6 offset-md-3">
+                  <AuthForm
+                     handleSubmit={handleSubmit}
+                     email={email}
+                     setEmail={setEmail}
+                     password={password}
+                     setPassword={setPassword}
+                     loading={loading}
+                     setLoading={setLoading}
+                     // Since i was using a reusable component i decided to add a new prop for "page"
+                     // so that user wont be required to add their names again when logging in
+                     page="login"
+                  />
+               </div>
             </div>
-         </div>
-         <div className="row">
-            <div className="col"></div>
-         </div>
+         </form>
          <div className="row">
             <div className="col">
                <p className="text-center">
