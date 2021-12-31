@@ -40,6 +40,7 @@ function MyApp({ Component, pageProps }) {
             width="100"
             // {...loaderProps}
          /> */}
+        
          <Component {...pageProps} />
       </UserProvider>
    );

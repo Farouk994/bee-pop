@@ -32,19 +32,32 @@ const Navbar = () => {
                <a className="nav-link text-light">Register</a>
             </Link> */}
 
-         <Link href="/login">
-            <a className="nav-link text-light">Login</a>
-         </Link>
+         {state !== null ? (
+            <>
+               <Link href="/dashboard">
+                  <a className="nav-link text-light">
+                     {/* try to see if user state is accessible to display on Dashboard*/}
+                     {/* {state && state.user && state.user.name} */}
+                     Dashboard
+                  </a>
+               </Link>
+               <Link href="/login">
+                  <a class="nav-link text-light" onClick={logout}>
+                     Logout
+                  </a>
+               </Link>
+            </>
+         ) : (
+            <>
+               <Link href="/login">
+                  <a className="nav-link text-light">Login</a>
+               </Link>
 
-         <Link href="/sign_in">
-            <a className="nav-link text-light">Sign In</a>
-         </Link>
-
-         <Link href="/">
-            <a class="nav-link text-light" href="/logout" onClick={logout}>
-               LogOut
-            </a>
-         </Link>
+               <Link href="/sign_in">
+                  <a className="nav-link text-light">Sign In</a>
+               </Link>
+            </>
+         )}
       </nav>
    );
 };
