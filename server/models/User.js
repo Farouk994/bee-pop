@@ -27,22 +27,46 @@ const UserSchema = new Schema(
       },
       about: {},
       photo: String,
-      following: [
+      goals: String,
+      sale: [
          {
-            type: Schema.ObjectId,
-            ref: "User",
+            customer: {
+               type: Schema.ObjectId,
+               ref: "customer",
+            },
+            // saleId: {
+            //    type: String,
+            // },
          },
       ],
-      followers: [
-         {
-            type: Schema.ObjectId,
-            ref: "User",
-         },
-      ],
+      // clients: [
+      //    {
+      //       type: Schema.ObjectId,
+      //       ref: "client",
+      //    },
+      // ],
+      // tasks: [
+      //    {
+      //       type: Schema.ObjectId,
+      //       ref: "task",
+      //    },
+      // ],
+      // reports: [
+      //    {
+      //       type: Schema.ObjectId,
+      //       ref: "report",
+      //    },
+      // ],
+      // followUps: [
+      //    {
+      //       type: Schema.ObjectId,
+      //       ref: "followup",
+      //    },
+      // ],
    },
    { timestamps: true }
 );
 
-const User = mongoose.model('User', UserSchema);
+const user = mongoose.model("user", UserSchema);
 
-module.exports = User;
+module.exports = user;
